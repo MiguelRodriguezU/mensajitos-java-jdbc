@@ -5,6 +5,9 @@
  */
 package com.mkdev.mensajitosapp;
 
+import java.sql.Connection;
+import java.util.Scanner;
+
 /**
  *
  * @author MIGUEL
@@ -15,13 +18,34 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Conexion cn = new Conexion();
-        if(cn.getConexion() != null){
-            System.out.println("Conexión OK!");
-        }else{
-            System.out.println("Conexión KO!");
-        }
+        Scanner sc = new Scanner(System.in);
+        
+        int opt = 0;
+        do{
+            System.out.println("----- MENU ----- ");
+            System.out.println("Aplicación de mensajes");
+            System.out.println(" 1. Crear");
+            System.out.println(" 2. Listar");
+            System.out.println(" 3. Eliminar");
+            System.out.println(" 4. Actualizar");
+            System.out.println(" 5. Salir");
+            
+            opt = sc.nextInt();
+            
+            switch(opt){
+                case 1: MensajeService.crear();
+                    break;
+                case 2: MensajeService.listar();
+                    break;
+                case 3: MensajeService.borrar();
+                    break;
+                case 4: MensajeService.actualizar();
+                    break;
+                default: break;
+            }
+            
+        }while(opt!=5);
+        
     }
     
 }
